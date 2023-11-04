@@ -291,6 +291,31 @@ static inline void ExitMap()
 
 /*----------------------------------------------------------------------------------------------------------------------
 
+	Game Turn
+
+----------------------------------------------------------------------------------------------------------------------*/
+
+static inline void MoveMonster(Entity *entity)
+{
+	// TODO: Move the monster in a random direction...
+}
+
+static inline void ProcessTurn()
+{
+	Entity *cur = Game.firstEntity;
+	while(cur)
+	{
+		// Move monsters if we find them.
+		if(cur->type == ENT_TYPE_MONSTER)
+		{
+			MoveMonster(cur);
+		}
+	}
+}
+
+
+/*----------------------------------------------------------------------------------------------------------------------
+
 	Game
 
 ----------------------------------------------------------------------------------------------------------------------*/
@@ -309,7 +334,10 @@ void NewGame()
 
 void HeroSkipTurn()
 {
-	// TODO: ...
+	if(Game.isGameInProgress && Game.heroEntity)
+	{
+		ProcessTurn();
+	}
 }
 
 bool HeroMove(u8 c)
@@ -329,6 +357,7 @@ bool HeroMove(u8 c)
 				return false;
 			}
 			PlaceEntity(Game.heroEntity, p.x, p.y);
+			ProcessTurn();
 			return true;
 		}
 	}
