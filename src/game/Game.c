@@ -350,11 +350,14 @@ static inline void ProcessTurn()
 	Entity *cur = Game.firstEntity;
 	while(cur)
 	{
+		Entity *next = cur->nextInGame;
+
 		// Move monsters if we find them.
 		if(cur->type == ENT_TYPE_MONSTER)
 		{
 			MoveMonster(cur);
 		}
+		cur = next;
 	}
 }
 
