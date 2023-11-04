@@ -182,6 +182,7 @@ static inline void PlaceEntity(Entity *entity, i32 x, i32 y)
 	GridCell *cell = GetGridCell(Game.grid, x, y);
 	if(cell)
 	{
+		SpawnEntity(entity);
 		RemoveEntity(entity);
 		if(!cell->lastEntity)
 		{
@@ -264,11 +265,14 @@ static inline void GenTestDungeonMap()
 			Game.grid->cells[x][y].tileId = TILE_ID_FLOOR;
 		}
 	}
-	SpawnEntity(Game.heroEntity);
 	PlaceEntity(Game.heroEntity, 10, 10);
 	Entity *downStair = CreateEntity(ENT_TYPE_STAIRWAY);
 	downStair->stairway.direction = STAIR_DIR_DOWN;
 	PlaceEntity(downStair, 20, 20);
+	PlaceEntity(CreateEntity(ENT_TYPE_MONSTER), 1, 1);
+	PlaceEntity(CreateEntity(ENT_TYPE_MONSTER), 35, 1);
+	PlaceEntity(CreateEntity(ENT_TYPE_MONSTER), 35, 35);
+	PlaceEntity(CreateEntity(ENT_TYPE_MONSTER), 1, 35);
 	GAME_EVENT(OnMapReady);
 }
 
