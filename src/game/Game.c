@@ -297,7 +297,52 @@ static inline void ExitMap()
 
 static inline void MoveMonster(Entity *entity)
 {
-	// TODO: Move the monster in a random direction...
+	// List of possible cardinals.
+	static u8 card[5] = { CARDINAL_NONE, CARDINAL_NORTH, CARDINAL_SOUTH, CARDINAL_EAST, CARDINAL_WEST };
+
+	// Grab a random cardinal off the list.
+	u8 c = card[RNG_Range(&gRNG, 0, 4)];
+
+	// No direction, bail.
+	if(c == CARDINAL_NONE)
+	{
+		return;
+	}
+
+	// Calculate the destination position.
+	SDL_Point p = CardinalOffset(c);
+	p.x += entity->position.x;
+	p.y += entity->position.y;
+
+	// Grab the destination cell.
+	GridCell *cell = GetGridCell(Game.grid, p.x, p.y);
+
+	// If cell is valid and walkable...
+	if(cell && cell->tileId == TILE_ID_FLOOR)
+	{
+		// Check for monsters in the destination.
+		{
+			Entity *monster = FindEntityTypeInCell(Game.grid, ENT_TYPE_MONSTER, p.x, p.y, NULL);
+			if(monster)
+			{
+				// No friendly fire, bail.
+				return;
+			}
+		}
+		
+		// Check for hero in the destination.
+		{
+			Entity *hero = FindEntityTypeInCell(Game.grid, ENT_TYPE_HERO, p.x, p.y, NULL);
+			if(hero)
+			{
+				// No attacking the hero (for now), bail.
+				return;
+			}
+		}
+
+		// If we get this far, all clear. Place us.
+		PlaceEntity(entity, p.x, p.y);
+	}
 }
 
 static inline void ProcessTurn()
