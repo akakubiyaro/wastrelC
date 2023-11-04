@@ -329,6 +329,7 @@ bool HeroMove(u8 c)
 				return false;
 			}
 			PlaceEntity(Game.heroEntity, p.x, p.y);
+			return true;
 		}
 	}
 	return false;
