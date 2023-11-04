@@ -298,7 +298,7 @@ static inline void ExitMap()
 static inline void MoveMonster(Entity *entity)
 {
 	// List of possible cardinals.
-	static u8 card[5] = { CARDINAL_NONE, CARDINAL_NORTH, CARDINAL_SOUTH, CARDINAL_EAST, CARDINAL_WEST };
+	static const u8 card[5] = { CARDINAL_NONE, CARDINAL_NORTH, CARDINAL_SOUTH, CARDINAL_EAST, CARDINAL_WEST };
 
 	// Grab a random cardinal off the list.
 	u8 c = card[RNG_Range(&gRNG, 0, 4)];
