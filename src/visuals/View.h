@@ -10,15 +10,22 @@
 
 #pragma once
 
+#include <Wastrel.h>
+
 typedef struct Actor Actor;
 typedef struct Stage Stage;
 
 struct Actor
 {
+	u16 tileId;
+	i32 sortIndex;
+	SDL_Point position;
 };
 
 struct Stage
 {
+	u32 cols, rows;
+	i16 **tileIds;
 };
 
 struct View

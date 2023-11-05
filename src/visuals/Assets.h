@@ -11,3 +11,6 @@
 #pragma once
 
 #include <Wastrel.h>
+
+#define TILE_W 32
+#define TILE_H 32
