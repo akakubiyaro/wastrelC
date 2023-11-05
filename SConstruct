@@ -34,7 +34,8 @@ if platform == "darwin":
 		"build/" + src_dir + "/*.c",
 		"build/" + src_dir + "/utils/*.c",
 		"build/" + src_dir + "/core/*.c",
-		"build/" + src_dir + "/game/*.c"
+		"build/" + src_dir + "/game/*.c",
+		"build/" + src_dir + "/visuals/*.c"
 	]
 
 	env.VariantDir("build", ".", 0)
@@ -98,7 +99,8 @@ if platform == "win32":
 		"build/" + src_dir + "/*.c",
 		"build/" + src_dir + "/utils/*.c",
 		"build/" + src_dir + "/core/*.c",
-		"build/" + src_dir + "/game/*.c"
+		"build/" + src_dir + "/game/*.c",
+		"build/" + src_dir + "/visuals/*.c"
 	]
 
 	env.VariantDir("build", ".", 0)

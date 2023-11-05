@@ -39,3 +39,7 @@
 #include "core/App.h"
 
 #include "game/Game.h"
+
+#include "visuals/Assets.h"
+#include "visuals/GUI.h"
+#include "visuals/View.h"
