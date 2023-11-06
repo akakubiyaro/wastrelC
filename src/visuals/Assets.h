@@ -23,6 +23,7 @@ struct Assets
 	TileSet figureTiles;
 	TileSet mapTiles;
 	TileSet glyphTiles;
+	TileSet guiTiles;
 };
 
 extern struct Assets Assets;

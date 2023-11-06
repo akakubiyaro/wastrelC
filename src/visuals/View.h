@@ -30,12 +30,17 @@ struct Stage
 };
 
 struct View
-{
-	bool needsActorSort;
+{	
 	SDL_Point position;
 	u32 numActore;
 	Stage *stage;
-	Actor **actors;
+	struct 
+	{
+		bool needsSort;
+		u32 num, cap;
+		Actor **actors;
+
+	} actorList;
 };
 
 extern struct View View;
