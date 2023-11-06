@@ -17,6 +17,7 @@ typedef struct Stage Stage;
 
 struct Actor
 {
+	bool isInView;
 	u16 tileId;
 	i32 sortIndex;
 	SDL_Point position;
@@ -30,6 +31,7 @@ struct Stage
 
 struct View
 {
+	bool needsActorSort;
 	SDL_Point position;
 	u32 numActore;
 	Stage *stage;
@@ -38,5 +40,11 @@ struct View
 
 extern struct View View;
 
+Actor *CreateActor();
+void AddActorToView(Actor *actor);
+void SetActorSortIndex(Actor *actor, i32 sortIndex);
+void ChangeActorSortIndex(Actor *actor, i32 sortIndex);
+void RemoveActorFromView(Actor *actor);
+void FreeActor(Actor *actor);
 void UpdateView();
 void DrawView();
