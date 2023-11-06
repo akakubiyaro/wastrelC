@@ -41,5 +41,6 @@
 #include "game/Game.h"
 
 #include "visuals/Assets.h"
+#include "visuals/TextArea.h"
 #include "visuals/GUI.h"
 #include "visuals/View.h"
