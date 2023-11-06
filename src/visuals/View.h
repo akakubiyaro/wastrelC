@@ -30,6 +30,13 @@ struct Stage
 
 struct View
 {
+	SDL_Point position;
+	u32 numActore;
+	Stage *stage;
+	Actor **actors;
 };
 
 extern struct View View;
+
+void UpdateView();
+void DrawView();
