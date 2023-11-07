@@ -41,6 +41,7 @@ struct View
 		Actor **actors;
 
 	} actorList;
+	DrawQueue dq;
 };
 
 extern struct View View;

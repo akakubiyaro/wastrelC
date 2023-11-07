@@ -39,6 +39,7 @@ struct GUI
 		Window **windows;
 
 	} windowList;
+	DrawQueue dq;
 };
 
 extern struct GUI GUI;
